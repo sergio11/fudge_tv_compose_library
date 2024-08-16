@@ -1,4 +1,14 @@
 <resources>
     <string name="no_text_value">----</string>
     <string name="retry_button_text">Retry</string>
+    <string name="press">Press</string>
+    <string name="to_go_back">Press Back</string>
+    <!-- Generic Buttons -->
+    <string name="dialog_generic_accept_button">Accept</string>
+    <string name="dialog_generic_cancel_button">Cancel</string>
+
+    <string name="generic_lost_network_connectivity_dialog_title">Network Connection Lost</string>
+    <string name="generic_lost_network_connectivity_dialog_description">It seems that your device has lost network connectivity. Please check your connection settings or restart the app.</string>
+    <string name="generic_lost_network_connectivity_dialog_open_settings_button_text">Open Settings</string>
+    <string name="generic_lost_network_connectivity_dialog_restart_app_button_text">Restart App</string>
 </resources>

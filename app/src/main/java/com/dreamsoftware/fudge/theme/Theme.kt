@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
 
 @Composable
-fun FudgeTheme(
+fun FudgeTvTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     lightColorScheme: ColorScheme = FudgeLightColorScheme,
     darkColorScheme: ColorScheme = FudgeDarkColorScheme,

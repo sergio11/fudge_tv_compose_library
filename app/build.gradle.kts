@@ -84,4 +84,8 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.tv.material)
     implementation(libs.coil.compose)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.ui.tooling)
 }
