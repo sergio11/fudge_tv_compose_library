@@ -1,0 +1,4 @@
+<resources>
+    <string name="no_text_value">----</string>
+    <string name="retry_button_text">Retry</string>
+</resources>
