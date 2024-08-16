@@ -75,17 +75,25 @@ publishing {
 }
 
 dependencies {
-    implementation(libs.appcompat)
-    implementation(libs.activity.compose)
-    implementation(libs.compose.runtime)
-    implementation(libs.compose.foundation)
-    implementation(libs.tv.material)
-    implementation(libs.androidx.material.icons.extended)
-    implementation(libs.androidx.material3.android)
-    implementation(libs.tv.material)
-    implementation(libs.coil.compose)
-    implementation(libs.androidx.media3.exoplayer)
-    implementation(libs.androidx.media3.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.ui.tooling)
+    // Core Android libraries
+    implementation(libs.appcompat) // Provides backward-compatible versions of Android framework APIs
+    implementation(libs.activity.compose) // Support for integrating Jetpack Compose with Activity
+
+    // Jetpack Compose libraries
+    implementation(libs.compose.runtime) // Core runtime for Jetpack Compose
+    implementation(libs.compose.foundation) // Foundational components for Jetpack Compose
+
+    // TV-specific Material Design components
+    implementation(libs.tv.material) // Material Design components tailored for TV interfaces
+    implementation(libs.androidx.material3.android) // Latest Material 3 components for Android
+    implementation(libs.androidx.material.icons.extended) // Extended Material icons for additional icon options
+
+    // Image loading and media playback
+    implementation(libs.coil.compose) // Image loading library for Jetpack Compose
+    implementation(libs.androidx.media3.exoplayer) // Media playback library
+    implementation(libs.androidx.media3.ui) // UI components for Media3
+
+    // Debugging and preview tools
+    implementation(libs.ui.tooling.preview) // Tools for previewing Compose UI elements
+    implementation(libs.ui.tooling) // Debugging tools for Jetpack Compose UI
 }
