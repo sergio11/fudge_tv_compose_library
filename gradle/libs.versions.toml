@@ -1,7 +1,7 @@
 [versions]
 compileSdk = "34"
 targetSdk = "34"
-minSdk = "24"
+minSdk = "25"
 androidComposeCompiler = "1.5.3"
 agp = "8.3.2"
 kotlin = "1.9.10"
