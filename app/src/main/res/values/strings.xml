@@ -3,6 +3,7 @@
     <string name="retry_button_text">Retry</string>
     <string name="press">Press</string>
     <string name="to_go_back">Press Back</string>
+    <string name="reset">Reset</string>
     <!-- Generic Buttons -->
     <string name="dialog_generic_accept_button">Accept</string>
     <string name="dialog_generic_cancel_button">Cancel</string>
