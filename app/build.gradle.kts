@@ -56,7 +56,7 @@ publishing {
             run {
                 groupId = "com.dreamsoftware.libraries"
                 artifactId = "fudge-tv-compose"
-                version = "0.0.16"
+                version = "0.0.20"
                 artifact("$buildDir/outputs/aar/app-release.aar")
             }
         }
@@ -82,6 +82,7 @@ dependencies {
     // Jetpack Compose libraries
     implementation(libs.compose.runtime) // Core runtime for Jetpack Compose
     implementation(libs.compose.foundation) // Foundational components for Jetpack Compose
+    implementation(libs.androidx.navigation.compose)
 
     // TV-specific Material Design components
     implementation(libs.tv.material) // Material Design components tailored for TV interfaces
