@@ -1,5 +1,8 @@
 package com.dreamsoftware.fudge.utils
 
+import android.content.Context
+import android.content.Intent
+import android.provider.Settings
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlin.time.Duration
@@ -45,4 +48,14 @@ fun Duration.toAudioTextDuration() = toComponents { h, m, s, _ ->
     } else {
         "${m}:${s.padStartWith0()}"
     }
+}
+
+fun Context.restartApplication() {
+    packageManager.getLeanbackLaunchIntentForPackage(packageName)?.run {
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    }?.let(::startActivity)
+}
+
+fun Context.openSystemSettings() {
+    startActivity(Intent(Settings.ACTION_SETTINGS))
 }

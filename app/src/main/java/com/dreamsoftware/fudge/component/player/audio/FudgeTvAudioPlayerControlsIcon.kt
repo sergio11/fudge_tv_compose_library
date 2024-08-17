@@ -15,7 +15,7 @@ import com.dreamsoftware.fudge.component.player.FudgeTvPlayerControlsIcon
 import com.dreamsoftware.fudge.theme.FudgeTvTheme
 
 @Composable
-internal fun FudgeTvAudioPlayerControlsIcon(
+fun FudgeTvAudioPlayerControlsIcon(
     icon: Int,
     modifier: Modifier = Modifier,
     border: ButtonBorder = IconButtonDefaults.border(),
