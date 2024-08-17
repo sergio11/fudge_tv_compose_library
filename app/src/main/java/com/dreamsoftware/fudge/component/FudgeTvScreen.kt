@@ -6,12 +6,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.LifecycleResumeEffect
-import com.dreamsoftware.fudge.core.FudgeViewModel
+import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
 import com.dreamsoftware.fudge.core.UiState
 
 @Composable
-fun <UI: UiState<UI>, SE: SideEffect, VM: FudgeViewModel<UI, SE>> FudgeTvScreen(
+fun <UI: UiState<UI>, SE: SideEffect, VM: FudgeTvViewModel<UI, SE>> FudgeTvScreen(
     viewModel: VM,
     onInitialUiState: () -> UI,
     onInit: VM.() -> Unit = {},

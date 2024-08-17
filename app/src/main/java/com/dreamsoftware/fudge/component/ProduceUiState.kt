@@ -5,10 +5,10 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.produceState
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
-import com.dreamsoftware.fudge.core.FudgeViewModel
+import com.dreamsoftware.fudge.core.FudgeTvViewModel
 
 @Composable
-internal fun <T, VM: FudgeViewModel<T, *>>produceUiState(initialState: T, viewModel: VM, lifecycle: Lifecycle): State<T> =
+internal fun <T, VM: FudgeTvViewModel<T, *>>produceUiState(initialState: T, viewModel: VM, lifecycle: Lifecycle): State<T> =
     produceState(
         initialValue = initialState,
         key1 = lifecycle,

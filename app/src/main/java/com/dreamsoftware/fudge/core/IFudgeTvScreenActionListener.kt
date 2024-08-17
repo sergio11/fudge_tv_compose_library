@@ -1,6 +1,6 @@
 package com.dreamsoftware.fudge.core
 
-interface IFudgeScreenActionListener {
+interface IFudgeTvScreenActionListener {
     fun onErrorMessageCleared() {}
     fun onInfoMessageCleared() {}
 }

@@ -33,6 +33,7 @@ import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
 import com.dreamsoftware.fudge.utils.EMPTY
 
 data class ProfileSelectorVO(
+    val uuid: String,
     val alias: String,
     @DrawableRes val avatarIconRes: Int
 )
@@ -41,9 +42,9 @@ data class ProfileSelectorVO(
 fun FudgeTvProfileSelector(
     profiles: List<ProfileSelectorVO>,
     editMode: Boolean = false,
-    onProfileSelected: (ProfileSelectorVO) -> Unit
+    onProfileSelected: (uuid: String) -> Unit
 ) {
-    var selectedAvatar by remember { mutableStateOf("") }
+    var selectedAvatar by remember { mutableStateOf(String.EMPTY) }
     FudgeTvFocusRequester { requester ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -63,7 +64,7 @@ fun FudgeTvProfileSelector(
                                 selectedAvatar = profile.alias
                             },
                         onPressed = {
-                            onProfileSelected(profile)
+                            onProfileSelected(profile.uuid)
                         }
                     )
                 }

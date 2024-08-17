@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
  * @param STATE The type representing the UI state.
  * @param EFFECT The type representing side effects.
  */
-abstract class FudgeViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : ViewModel(), IFudgeScreenActionListener {
+abstract class FudgeTvViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : ViewModel(), IFudgeTvScreenActionListener {
 
     private companion object {
         const val ENABLE_REPLAY_SIDE_EFFECTS = 1
@@ -93,7 +93,7 @@ abstract class FudgeViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : Vie
      * @param onMapExceptionToState A function to map exceptions to the state.
      * @return The result of the use case execution.
      */
-    protected suspend fun <RESULT, UC : FudgeUseCase<RESULT>> executeUseCase(
+    protected suspend fun <RESULT, UC : FudgeTvUseCase<RESULT>> executeUseCase(
         useCase: UC,
         onGetDefaultValue: () -> RESULT,
         onMapExceptionToState: ((Exception, STATE) -> STATE)? = null,
@@ -117,7 +117,7 @@ abstract class FudgeViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : Vie
      * @param onFailed A callback function for failed execution.
      * @param onMapExceptionToState A function to map exceptions to the state.
      */
-    protected fun <RESULT, UC : FudgeUseCase<RESULT>> executeUseCase(
+    protected fun <RESULT, UC : FudgeTvUseCase<RESULT>> executeUseCase(
         useCase: UC,
         onSuccess: (RESULT) -> Unit = {},
         onFailed: () -> Unit = {},
@@ -146,7 +146,7 @@ abstract class FudgeViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : Vie
      * @param onGetDefaultValue A function that provides a default value in case of failure.
      * @return The result of the use case execution.
      */
-    protected suspend fun <PARAMS, RESULT, UC : FudgeUseCaseWithParams<PARAMS, RESULT>> executeUseCaseWithParams(
+    protected suspend fun <PARAMS, RESULT, UC : FudgeTvUseCaseWithParams<PARAMS, RESULT>> executeUseCaseWithParams(
         useCase: UC,
         params: PARAMS,
         onMapExceptionToState: ((Exception, STATE) -> STATE)? = null,
@@ -175,7 +175,7 @@ abstract class FudgeViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : Vie
      * @param onFailed A callback function to be invoked upon failed execution.
      * @param onMapExceptionToState A function to map exceptions to the state.
      */
-    protected fun <PARAMS, RESULT, UC : FudgeUseCaseWithParams<PARAMS, RESULT>> executeUseCaseWithParams(
+    protected fun <PARAMS, RESULT, UC : FudgeTvUseCaseWithParams<PARAMS, RESULT>> executeUseCaseWithParams(
         useCase: UC,
         params: PARAMS,
         onSuccess: (RESULT) -> Unit = {},

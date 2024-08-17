@@ -1,5 +1,5 @@
 package com.dreamsoftware.fudge.core
 
-interface IFudgeErrorMapper {
+interface IFudgeTvErrorMapper {
     fun mapToMessage(ex: Throwable): String
 }

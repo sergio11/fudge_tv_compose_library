@@ -4,12 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
-import com.dreamsoftware.fudge.core.FudgeViewModel
+import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
-internal fun <SE: SideEffect, VM: FudgeViewModel<*, SE>>ConsumeSideEffects(
+internal fun <SE: SideEffect, VM: FudgeTvViewModel<*, SE>>ConsumeSideEffects(
     viewModel: VM,
     lifecycle: Lifecycle,
     onSideEffectFired: (SE) -> Unit
@@ -27,7 +27,7 @@ internal fun <SE: SideEffect, VM: FudgeViewModel<*, SE>>ConsumeSideEffects(
 }
 
 @Composable
-private fun <SE: SideEffect, VM: FudgeViewModel<*, SE>> RepeatOnStart(
+private fun <SE: SideEffect, VM: FudgeTvViewModel<*, SE>> RepeatOnStart(
     viewModel: VM,
     lifecycle: Lifecycle,
     block: suspend VM.() -> Unit
