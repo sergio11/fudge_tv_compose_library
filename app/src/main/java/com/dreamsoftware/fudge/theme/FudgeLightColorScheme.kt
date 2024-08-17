@@ -1,6 +1,6 @@
 package com.dreamsoftware.fudge.theme
 
-import androidx.compose.material3.lightColorScheme
+import androidx.tv.material3.lightColorScheme
 
 val FudgeLightColorScheme = lightColorScheme(
     primary = FudgeLightColorPalette.mdThemePrimary,

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
-class FudgeEventBus {
+class FudgeTvEventBus {
     private val coroutineScope = CoroutineScope(Dispatchers.Default)
     private val _events = MutableSharedFlow<IFudgeAppEvent>()
     val events = _events.asSharedFlow()

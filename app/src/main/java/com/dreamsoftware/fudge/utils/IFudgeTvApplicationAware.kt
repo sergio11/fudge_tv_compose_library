@@ -2,7 +2,7 @@ package com.dreamsoftware.fudge.utils
 
 import androidx.annotation.StringRes
 
-interface IFudgeApplicationAware {
+interface IFudgeTvApplicationAware {
 
     fun getString(@StringRes stringResId: Int): String
 
