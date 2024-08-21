@@ -20,7 +20,8 @@ fun FudgeTvAudioPlayerSeeker(
 ) {
     Column(modifier = modifier) {
         FudgeTvAudioPlayerControllerIndicator(
-            progress = (contentProgress / contentDuration).toFloat(),
+            modifier = Modifier.fillMaxWidth(),
+            progress = ( contentProgress / contentDuration).toFloat(),
             onSeek = onSeek
         )
         Row(

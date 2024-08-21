@@ -1,5 +1,6 @@
 package com.dreamsoftware.fudge.component.player
 
+import android.util.Log
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.focusable
@@ -32,68 +33,72 @@ fun FudgeTvPlayerControllerIndicator(
     onSelected: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val interactionSource = remember { MutableInteractionSource() }
-    val isFocused by interactionSource.collectIsFocusedAsState()
+    with(MaterialTheme.colorScheme) {
 
-    val color by rememberUpdatedState(
-        newValue = if (isSelected) MaterialTheme.colorScheme.primary
-        else MaterialTheme.colorScheme.onSurface
-    )
-    val animatedIndicatorHeight by animateDpAsState(
-        targetValue = 4.dp.times((if (isFocused) 2.5f else 1f)), label = ""
-    )
-    var seekProgress by remember { mutableFloatStateOf(0f) }
-    val focusManager = LocalFocusManager.current
+        Log.d("ATV_AUDIO_PLAYER", "FudgeTvPlayerControllerIndicator2 progress: $progress - isSelected: $isSelected CALLED!")
+        val interactionSource = remember { MutableInteractionSource() }
+        val isFocused by interactionSource.collectIsFocusedAsState()
 
-    Canvas(
-        modifier = modifier
-            .height(animatedIndicatorHeight)
-            .padding(horizontal = 4.dp)
-            .handleDPadKeyEvents(
-                onEnter = {
-                    if (isSelected) {
-                        onSeek(seekProgress)
-                        focusManager.moveFocus(FocusDirection.Exit)
-                    } else {
-                        seekProgress = progress
+        val color by rememberUpdatedState(
+            newValue = if (isSelected) primary
+            else onSurface
+        )
+        val animatedIndicatorHeight by animateDpAsState(
+            targetValue = 4.dp.times((if (isFocused) 2.5f else 1f)), label = ""
+        )
+        var seekProgress by remember { mutableFloatStateOf(0f) }
+        val focusManager = LocalFocusManager.current
+
+        Canvas(
+            modifier = modifier
+                .height(animatedIndicatorHeight)
+                .padding(horizontal = 4.dp)
+                .handleDPadKeyEvents(
+                    onEnter = {
+                        if (isSelected) {
+                            onSeek(seekProgress)
+                            focusManager.moveFocus(FocusDirection.Exit)
+                        } else {
+                            seekProgress = progress
+                        }
+                        onSelected()
+                    },
+                    onLeft = {
+                        if (isSelected) {
+                            seekProgress = (seekProgress - 0.1f).coerceAtLeast(0f)
+                        } else {
+                            focusManager.moveFocus(FocusDirection.Left)
+                        }
+                    },
+                    onRight = {
+                        if (isSelected) {
+                            seekProgress = (seekProgress + 0.1f).coerceAtMost(1f)
+                        } else {
+                            focusManager.moveFocus(FocusDirection.Right)
+                        }
                     }
-                    onSelected()
-                },
-                onLeft = {
-                    if (isSelected) {
-                        seekProgress = (seekProgress - 0.1f).coerceAtLeast(0f)
-                    } else {
-                        focusManager.moveFocus(FocusDirection.Left)
-                    }
-                },
-                onRight = {
-                    if (isSelected) {
-                        seekProgress = (seekProgress + 0.1f).coerceAtMost(1f)
-                    } else {
-                        focusManager.moveFocus(FocusDirection.Right)
-                    }
-                }
-            )
-            .focusable(interactionSource = interactionSource),
-        onDraw = {
-            val yOffset = size.height.div(2)
-            drawLine(
-                color = color.copy(alpha = 0.24f),
-                start = Offset(x = 0f, y = yOffset),
-                end = Offset(x = size.width, y = yOffset),
-                strokeWidth = size.height,
-                cap = StrokeCap.Round
-            )
-            drawLine(
-                color = color,
-                start = Offset(x = 0f, y = yOffset),
-                end = Offset(
-                    x = size.width.times(if (isSelected) seekProgress else progress),
-                    y = yOffset
-                ),
-                strokeWidth = size.height,
-                cap = StrokeCap.Round
-            )
-        }
-    )
+                )
+                .focusable(interactionSource = interactionSource),
+            onDraw = {
+                val yOffset = size.height.div(2)
+                drawLine(
+                    color = color.copy(alpha = 0.24f),
+                    start = Offset(x = 0f, y = yOffset),
+                    end = Offset(x = size.width, y = yOffset),
+                    strokeWidth = size.height,
+                    cap = StrokeCap.Round
+                )
+                drawLine(
+                    color = color,
+                    start = Offset(x = 0f, y = yOffset),
+                    end = Offset(
+                        x = size.width.times(if (isSelected) seekProgress else progress),
+                        y = yOffset
+                    ),
+                    strokeWidth = size.height,
+                    cap = StrokeCap.Round
+                )
+            }
+        )
+    }
 }
