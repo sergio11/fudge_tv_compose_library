@@ -153,3 +153,12 @@ Contributions to Fudge: Jetpack Compose TV UI Kit are highly encouraged! If you'
 
 ## Credits
 Fudge: Jetpack Compose TV UI Kit is developed and maintained by Sergio Sánchez Sánchez (Dream Software). Special thanks to the open-source community and the contributors who have made this project possible. If you have any questions, feedback, or suggestions, feel free to reach out at dreamsoftware92@gmail.com.
+
+## Visitors Count
+
+<img width="auto" src="https://profile-counter.glitch.me/fudge_tv_compose_library/count.svg" />
+ 
+ ## Please Share & Star the repository to keep me motivated.
+  <a href = "https://github.com/sergio11/fudge_tv_compose_library/stargazers">
+     <img src = "https://img.shields.io/github/stars/sergio11/fudge_tv_compose_library" />
+  </a>
