@@ -59,7 +59,7 @@ fun SignInScreen(
 }
 ```
 
-Inside the SignInScreen function, there's a FudgeTvScreen composable. This is a custom screen component provided by the Brownie library. It's responsible for managing the UI state and handling side effects in a declarative way. Here's what each parameter does:
+Inside the SignInScreen function, there's a FudgeTvScreen composable. This is a custom screen component provided by the FudgeTV library. It's responsible for managing the UI state and handling side effects in a declarative way. Here's what each parameter does:
 
 - **viewModel:** The **SignInViewModel** instance passed to the **FudgeTvScreen** component.
 - **onBackPressed:** The lambda function passed to the **FudgeTvScreen** component, which is called when the user navigates back from the screen.
