@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,6 +29,10 @@ fun FudgeTvMoreOptionsButton(
     modifier: Modifier = Modifier,
     @StringRes textRes: Int,
     @DrawableRes icon: Int,
+    focusedContainerColor: Color? = null,
+    containerColor: Color? = null,
+    focusedContentColor: Color? = null,
+    contentColor: Color? = null,
     onClick: () -> Unit = {}
 ) {
     with(MaterialTheme.colorScheme) {
@@ -37,10 +42,10 @@ fun FudgeTvMoreOptionsButton(
             modifier = modifier.size(height = 50.dp, width = 292.dp),
             shape = ButtonDefaults.shape(shape = RoundedCornerShape(12.dp)),
             colors = ButtonDefaults.colors(
-                focusedContainerColor = onSurface,
-                containerColor = surfaceVariant.copy(0.4f),
-                focusedContentColor = inverseOnSurface,
-                contentColor = onSurface
+                focusedContainerColor = focusedContainerColor ?: onSurface,
+                containerColor = containerColor ?: surfaceVariant.copy(0.4f),
+                focusedContentColor = focusedContentColor ?: inverseOnSurface,
+                contentColor = contentColor ?: onSurface
             ),
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 15.dp),
             scale = ButtonDefaults.scale(scale = 1f, focusedScale = 1.1f),

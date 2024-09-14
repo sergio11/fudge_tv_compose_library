@@ -23,7 +23,7 @@ import com.dreamsoftware.fudge.utils.EMPTY
 fun FudgeTvCardDetails(
     modifier: Modifier = Modifier,
     title: String = String.EMPTY,
-    time: String = String.EMPTY,
+    subtitle: String = String.EMPTY,
     description: String = String.EMPTY,
     imageUrl: String = String.EMPTY
 ) {
@@ -55,7 +55,7 @@ fun FudgeTvCardDetails(
             )
             FudgeTvText(
                 type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
-                titleText = time,
+                titleText = subtitle,
                 textColor = onSurface.copy(alpha = 0.6f),
                 maxLines = 1,
                 overflow = TextOverflow.Clip
@@ -77,7 +77,7 @@ private fun CommonCardDetailsPreview() {
     FudgeTvTheme {
         FudgeTvCardDetails(
             title = "Total-body balance pilates",
-            time = "34 Min  |  Intensity ••••",
+            subtitle = "34 Min  |  Intensity ••••",
             description = "Andrea's signature low-impact, total-body class in just 30 minutes. Hit every muscle group with barre and Pilates moves that leave you feeling strong, refreshed, and energized",
             imageUrl = "URL"
         )
