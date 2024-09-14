@@ -25,6 +25,7 @@ fun FudgeTvPlayerControlsIcon(
     icon: Int,
     border: ButtonBorder,
     buttonColor: Color,
+    focusedButtonColor: Color? = null,
     iconColor: Color = Color.Gray,
     size: Dp = 40.dp,
     interactionSource: MutableInteractionSource? = null,
@@ -35,6 +36,7 @@ fun FudgeTvPlayerControlsIcon(
         onClick = onClick,
         icon = icon,
         buttonColor = buttonColor,
+        focusedButtonColor = focusedButtonColor,
         iconColor = iconColor,
         interactionSource = interactionSource,
         border = border

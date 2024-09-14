@@ -1,6 +1,5 @@
 package com.dreamsoftware.fudge.component.player
 
-import android.util.Log
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.focusable
@@ -18,6 +17,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
@@ -27,21 +27,25 @@ import com.dreamsoftware.fudge.utils.handleDPadKeyEvents
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun FudgeTvPlayerControllerIndicator(
+    modifier: Modifier = Modifier,
     progress: Float,
     onSeek: (seekProgress: Float) -> Unit,
     isSelected: Boolean,
+    normalColor: Color? = null,
+    isSelectedColor: Color? = null,
     onSelected: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     with(MaterialTheme.colorScheme) {
 
-        Log.d("ATV_AUDIO_PLAYER", "FudgeTvPlayerControllerIndicator2 progress: $progress - isSelected: $isSelected CALLED!")
         val interactionSource = remember { MutableInteractionSource() }
         val isFocused by interactionSource.collectIsFocusedAsState()
 
         val color by rememberUpdatedState(
-            newValue = if (isSelected) primary
-            else onSurface
+            newValue = if (isSelected) {
+                isSelectedColor ?: primary
+            } else {
+                normalColor ?: onSurface
+            }
         )
         val animatedIndicatorHeight by animateDpAsState(
             targetValue = 4.dp.times((if (isFocused) 2.5f else 1f)), label = ""

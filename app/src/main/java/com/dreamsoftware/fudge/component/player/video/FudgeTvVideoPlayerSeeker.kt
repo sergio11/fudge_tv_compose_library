@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dreamsoftware.fudge.theme.FudgeTvTheme
@@ -15,16 +16,20 @@ import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun FudgeTvVideoPlayerSeeker(
+    modifier: Modifier = Modifier,
     state: FudgeTvVideoPlayerState,
     onSeek: (Float) -> Unit,
     contentProgress: Duration,
     contentDuration: Duration,
-    modifier: Modifier = Modifier,
+    normalColor: Color? = null,
+    isSelectedColor: Color? = null
 ) {
     Row(
         modifier = modifier, verticalAlignment = Alignment.CenterVertically
     ) {
         FudgeTvVideoPlayerControllerIndicator(
+            normalColor = normalColor,
+            isSelectedColor = isSelectedColor,
             progress = (contentProgress / contentDuration).toFloat(), onSeek = onSeek, state = state
         )
         FudgeTvVideoPlayerDurationText(
@@ -32,7 +37,8 @@ fun FudgeTvVideoPlayerSeeker(
                 horizontal = 12.dp
             ),
             textProgress = contentProgress.toVideoTextProgress(),
-            textDuration = contentDuration.toVideoTextDuration()
+            textDuration = contentDuration.toVideoTextDuration(),
+            color = normalColor
         )
     }
 }

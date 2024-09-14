@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import com.dreamsoftware.fudge.component.player.FudgeTvPlayerControllerIndicator
@@ -16,10 +17,12 @@ import com.dreamsoftware.fudge.theme.FudgeTvTheme
 
 @Composable
 fun RowScope.FudgeTvVideoPlayerControllerIndicator(
+    modifier: Modifier = Modifier,
     progress: Float,
     onSeek: (seekProgress: Float) -> Unit,
     state: FudgeTvVideoPlayerState,
-    modifier: Modifier = Modifier,
+    normalColor: Color? = null,
+    isSelectedColor: Color? = null,
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -34,6 +37,8 @@ fun RowScope.FudgeTvVideoPlayerControllerIndicator(
     FudgeTvPlayerControllerIndicator(
         progress = progress,
         onSeek = onSeek,
+        normalColor = normalColor,
+        isSelectedColor = isSelectedColor,
         isSelected = isSelected,
         onSelected = { isSelected = !isSelected },
         modifier = modifier.weight(1f)

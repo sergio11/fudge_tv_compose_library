@@ -23,10 +23,14 @@ import com.dreamsoftware.fudge.theme.FudgeTvTheme
 
 @Composable
 fun FudgeTvVideoPlayerControlsIcon(
+    modifier: Modifier = Modifier,
     state: FudgeTvVideoPlayerState,
     isPlaying: Boolean,
     icon: Int,
-    modifier: Modifier = Modifier,
+    contentColor: Color? = null,
+    focusedContentColor: Color? = null,
+    containerColor: Color? = null,
+    focusedContainerColor: Color? = null,
     onClick: () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
@@ -46,19 +50,20 @@ fun FudgeTvVideoPlayerControlsIcon(
             border = IconButtonDefaults.border(
                 border = Border(
                     border = BorderStroke(1.5.dp, if(isFocused) {
-                        primary
+                        focusedContentColor ?: primary
                     } else {
-                        onPrimary
+                        contentColor ?: onPrimary
                     }),
                     shape = CircleShape
                 )
             ),
-            buttonColor = Color.Transparent,
+            buttonColor = containerColor ?: Color.Transparent,
+            focusedButtonColor = focusedContainerColor,
             onClick = onClick,
             iconColor = if(isFocused) {
-                primary
+                focusedContentColor ?: primary
             } else {
-                onPrimary
+                contentColor ?: onPrimary
             }
         )
     }

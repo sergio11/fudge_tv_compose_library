@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.dreamsoftware.fudge.component.FudgeTvButton
@@ -45,6 +46,9 @@ fun FudgeTvProfileScreenContent(
     @StringRes primaryOptionTextRes: Int,
     @StringRes secondaryOptionTextRes: Int? = null,
     @StringRes tertiaryOptionTextRes: Int? = null,
+    mainColor: Color? = null,
+    secondaryColor: Color? = null,
+    ternaryColor: Color? = null,
     onPrimaryOptionPressed: () -> Unit = {},
     onSecondaryOptionPressed: () -> Unit = {},
     onTertiaryOptionPressed: () -> Unit = {},
@@ -55,7 +59,11 @@ fun FudgeTvProfileScreenContent(
         error = error,
         onErrorAccepted = onErrorAccepted
     ) {
-        FudgeTvProfileGradientBox {
+        FudgeTvProfileGradientBox(
+            mainColor = mainColor,
+            secondaryColor = secondaryColor,
+            ternaryColor = ternaryColor
+        ) {
             isLoading?.let {
                 FudgeTvLoadingDialog(
                     isShowingDialog = it,

@@ -10,6 +10,7 @@ import androidx.tv.material3.ButtonBorder
 import androidx.tv.material3.Icon
 import androidx.tv.material3.IconButton
 import androidx.tv.material3.IconButtonDefaults
+import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.fudge.R
 
 @Composable
@@ -19,6 +20,7 @@ fun FudgeTvFillIconButton(
     onClick: () -> Unit,
     border: ButtonBorder = IconButtonDefaults.border(),
     buttonColor: Color = Color.White,
+    focusedButtonColor: Color? = null,
     iconColor: Color = Color.Gray,
     interactionSource: MutableInteractionSource? = null,
 ) {
@@ -27,7 +29,8 @@ fun FudgeTvFillIconButton(
         modifier = modifier,
         border = border,
         colors = IconButtonDefaults.colors(
-            buttonColor
+            containerColor = buttonColor,
+            focusedContainerColor = focusedButtonColor ?: MaterialTheme.colorScheme.onSurface
         ),
         interactionSource = interactionSource
     ) {

@@ -15,19 +15,21 @@ fun FudgeTvVideoPlayerDurationText(
     textProgress: String,
     textDuration: String,
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colorScheme.onSurface
+    color: Color? = null
 ) {
-    Row(modifier = modifier) {
-        Text(
-            text = "$textProgress / ",
-            color = color,
-            style = MaterialTheme.typography.bodySmall
-        )
-        Text(
-            text = textDuration,
-            color = color.copy(alpha = 0.60f),
-            style = MaterialTheme.typography.bodySmall
-        )
+    with(MaterialTheme.colorScheme) {
+        Row(modifier = modifier) {
+            Text(
+                text = "$textProgress / ",
+                color = color ?: onSurface,
+                style = MaterialTheme.typography.bodySmall
+            )
+            Text(
+                text = textDuration,
+                color = (color ?: onSurface).copy(alpha = 0.60f),
+                style = MaterialTheme.typography.bodySmall
+            )
+        }
     }
 }
 

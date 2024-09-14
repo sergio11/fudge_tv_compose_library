@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,6 +20,8 @@ fun FudgeTvPlayerTitle(
     description: String,
     modifier: Modifier = Modifier,
     descriptionModifier: Modifier = Modifier,
+    titleColor: Color? = null,
+    descriptionColor: Color? = null
 ) {
     with(MaterialTheme.colorScheme) {
         Column(modifier) {
@@ -26,13 +29,13 @@ fun FudgeTvPlayerTitle(
                 modifier = Modifier.padding(bottom = 4.dp),
                 type = FudgeTvTextTypeEnum.HEADLINE_SMALL,
                 titleText = title,
-                textColor = onSurface,
+                textColor = titleColor ?: onSurface,
             )
             FudgeTvText(
                 modifier = descriptionModifier,
                 type = FudgeTvTextTypeEnum.LABEL_LARGE,
                 titleText = description,
-                textColor = onSurface.copy(0.60f),
+                textColor = (descriptionColor ?: onSurface).copy(0.60f),
                 textAlign = TextAlign.Center
             )
         }
