@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -45,6 +46,8 @@ fun FudgeTvTextField(
     enabled: Boolean = true,
     onValueChange: (value: String) -> Unit = {},
     @StringRes labelRes: Int,
+    focusedLabelColor: Color? = null,
+    unfocusedLabelColor: Color? = null,
     icon: ImageVector,
     imeAction: ImeAction = ImeAction.Next,
     onImeActionCompleted: () -> Unit = {},
@@ -62,8 +65,8 @@ fun FudgeTvTextField(
                 value = value,
                 enabled = enabled,
                 colors = TextFieldDefaults.colors(
-                    focusedLabelColor = onPrimary,
-                    unfocusedLabelColor = if(value.isNotBlank()) {
+                    focusedLabelColor = focusedLabelColor ?: onPrimary,
+                    unfocusedLabelColor = unfocusedLabelColor ?: if(value.isNotBlank()) {
                         onPrimary
                     } else {
                         primary

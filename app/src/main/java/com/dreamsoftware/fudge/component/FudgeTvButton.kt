@@ -44,6 +44,9 @@ fun FudgeTvButton(
     style: FudgeTvButtonStyleTypeEnum = FudgeTvButtonStyleTypeEnum.NORMAL,
     enableBorder: Boolean = true,
     buttonShape: Shape = RoundedCornerShape(percent = 20),
+    borderColor: Color? = null,
+    containerColor: Color? = null,
+    contentColor: Color? = null,
     text: String? = null,
     textRes: Int? = null,
     onClick: () -> Unit,
@@ -75,7 +78,7 @@ fun FudgeTvButton(
                             0.dp
                         },
                         color = if(enableBorder){
-                            when(style) {
+                            borderColor ?: when(style) {
                                 FudgeTvButtonStyleTypeEnum.NORMAL -> onPrimaryContainer
                                 FudgeTvButtonStyleTypeEnum.INVERSE -> onSecondaryContainer
                                 FudgeTvButtonStyleTypeEnum.TRANSPARENT -> onTertiaryContainer
@@ -89,7 +92,7 @@ fun FudgeTvButton(
             enabled = enabled,
             shape = ButtonDefaults.shape(shape = buttonShape),
             colors = ButtonDefaults.colors(
-                containerColor = when(style) {
+                containerColor = containerColor ?: when(style) {
                     FudgeTvButtonStyleTypeEnum.NORMAL -> if (enableBorder) {
                         primaryContainer.copy(alpha = 0.8f)
                     } else {
@@ -102,7 +105,7 @@ fun FudgeTvButton(
                     }
                     FudgeTvButtonStyleTypeEnum.TRANSPARENT -> Color.Transparent
                 },
-                contentColor = when(style) {
+                contentColor = contentColor ?: when(style) {
                     FudgeTvButtonStyleTypeEnum.NORMAL -> onPrimaryContainer
                     FudgeTvButtonStyleTypeEnum.INVERSE -> onSecondaryContainer
                     FudgeTvButtonStyleTypeEnum.TRANSPARENT -> onTertiaryContainer
@@ -127,7 +130,7 @@ fun FudgeTvButton(
                     },
                     titleText = text,
                     titleRes = textRes,
-                    textColor = when(style) {
+                    textColor = contentColor ?: when(style) {
                         FudgeTvButtonStyleTypeEnum.NORMAL -> onPrimaryContainer
                         FudgeTvButtonStyleTypeEnum.INVERSE -> onSecondaryContainer
                         FudgeTvButtonStyleTypeEnum.TRANSPARENT -> onTertiaryContainer

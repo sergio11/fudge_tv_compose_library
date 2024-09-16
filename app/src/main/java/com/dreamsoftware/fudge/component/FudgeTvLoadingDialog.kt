@@ -8,6 +8,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.tv.material3.MaterialTheme
 
 @Composable
@@ -16,12 +17,16 @@ fun FudgeTvLoadingDialog(
     @DrawableRes mainLogoRes: Int,
     @StringRes titleRes: Int,
     @StringRes descriptionRes: Int,
+    containerColor: Color? = null,
+    contentColor: Color? = null,
 ) {
     FudgeTvDialog(
         isVisible = isShowingDialog,
         mainLogoRes = mainLogoRes,
         titleRes = titleRes,
-        descriptionRes = descriptionRes
+        descriptionRes = descriptionRes,
+        containerColor = containerColor,
+        contentColor = contentColor
     ) {
         DialogContent()
     }

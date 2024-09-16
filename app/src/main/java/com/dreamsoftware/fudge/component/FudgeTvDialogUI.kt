@@ -41,6 +41,8 @@ fun FudgeTvDialog(
     description: String? = null,
     @StringRes cancelRes: Int = R.string.dialog_generic_cancel_button,
     @StringRes successRes: Int = R.string.dialog_generic_accept_button,
+    containerColor: Color? = null,
+    contentColor: Color? = null,
     onCancelClicked: (() -> Unit)? = null,
     onAcceptClicked: (() -> Unit)? = null,
     isAcceptEnabled: Boolean = true,
@@ -59,6 +61,8 @@ fun FudgeTvDialog(
                 successRes = successRes,
                 onCancelClicked = onCancelClicked,
                 onAcceptClicked = onAcceptClicked,
+                containerColor = containerColor,
+                contentColor = contentColor,
                 isAcceptEnabled = isAcceptEnabled,
                 customContent = customContent
             )
@@ -74,6 +78,8 @@ private fun CommonDialogUI(
     description: String? = null,
     @StringRes cancelRes: Int,
     @StringRes successRes: Int,
+    containerColor: Color? = null,
+    contentColor: Color? = null,
     onCancelClicked: (() -> Unit)? = null,
     onAcceptClicked: (() -> Unit)? = null,
     isAcceptEnabled: Boolean = true,
@@ -87,7 +93,7 @@ private fun CommonDialogUI(
                 .border(2.dp, Color.Gray, RoundedCornerShape(16.dp)),
         ) {
             Column(
-                modifier = modifier.background(inverseSurface),
+                modifier = modifier.background(containerColor ?: inverseSurface),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
@@ -105,7 +111,7 @@ private fun CommonDialogUI(
                         modifier = Modifier
                             .fillMaxWidth(),
                         maxLines = 2,
-                        textColor = inverseOnSurface,
+                        textColor = contentColor ?: inverseOnSurface,
                         textAlign = TextAlign.Center
                     )
                     Spacer(modifier = Modifier.height(10.dp))
@@ -115,7 +121,7 @@ private fun CommonDialogUI(
                             .fillMaxWidth(),
                         type = FudgeTvTextTypeEnum.BODY_MEDIUM,
                         titleText = description,
-                        textColor = inverseOnSurface,
+                        textColor = contentColor ?: inverseOnSurface,
                         textAlign = TextAlign.Center
                     )
                 }
