@@ -26,7 +26,7 @@ fun FudgeTvPlayerTitle(
     with(MaterialTheme.colorScheme) {
         Column(modifier) {
             FudgeTvText(
-                modifier = Modifier.padding(bottom = 4.dp),
+                modifier = modifier.padding(bottom = 4.dp),
                 type = FudgeTvTextTypeEnum.HEADLINE_SMALL,
                 titleText = title,
                 textColor = titleColor ?: onSurface,
