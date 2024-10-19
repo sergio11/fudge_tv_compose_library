@@ -71,6 +71,20 @@ abstract class FudgeTvViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : V
     }
 
     /**
+     * Executes a callback function on the current UI state.
+     *
+     * This method allows you to perform operations on the current state of the UI by providing a lambda function
+     * that will be executed in the context of the current `uiState`. The `uiState` is accessed via the `value`
+     * property, and the callback is invoked on it.
+     *
+     * @param callback A lambda function that operates on the current `STATE`. This lambda is executed
+     * within the context of the current UI state, allowing modifications or actions to be taken based on the state.
+     */
+    protected fun doOnUiState(callback: STATE.() -> Unit) {
+        uiState.value.callback()
+    }
+
+    /**
      * Launches a side effect by emitting it to the SharedFlow.
      *
      * @param effect The side effect to be emitted.
@@ -91,21 +105,27 @@ abstract class FudgeTvViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : V
      * @param useCase The use case to execute.
      * @param onGetDefaultValue A function that provides a default value in case of failure.
      * @param onMapExceptionToState A function to map exceptions to the state.
+     * @param showLoadingState A boolean indicating if the loading state should be shown (default is true).
      * @return The result of the use case execution.
      */
     protected suspend fun <RESULT, UC : FudgeTvUseCase<RESULT>> executeUseCase(
         useCase: UC,
         onGetDefaultValue: () -> RESULT,
         onMapExceptionToState: ((Exception, STATE) -> STATE)? = null,
+        showLoadingState: Boolean = true
     ): RESULT {
-        onLoading()
+        if (showLoadingState) {
+            onLoading()
+        }
         return try {
             useCase.invoke(scope = viewModelScope)
         } catch (ex: Exception) {
             onErrorOccurred(ex, onMapExceptionToState)
             onGetDefaultValue()
         } finally {
-            onIdle()
+            if (showLoadingState) {
+                onIdle()
+            }
         }
     }
 
@@ -116,18 +136,24 @@ abstract class FudgeTvViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : V
      * @param onSuccess A callback function for successful execution.
      * @param onFailed A callback function for failed execution.
      * @param onMapExceptionToState A function to map exceptions to the state.
+     * @param showLoadingState A boolean indicating if the loading state should be shown (default is true).
      */
     protected fun <RESULT, UC : FudgeTvUseCase<RESULT>> executeUseCase(
         useCase: UC,
         onSuccess: (RESULT) -> Unit = {},
         onFailed: () -> Unit = {},
-        onMapExceptionToState: ((Exception, STATE) -> STATE)? = null
+        onMapExceptionToState: ((Exception, STATE) -> STATE)? = null,
+        showLoadingState: Boolean = true
     ) {
-        onLoading()
+        if (showLoadingState) {
+            onLoading()
+        }
         useCase.invoke(
             scope = viewModelScope,
             onSuccess = {
-                onIdle()
+                if (showLoadingState) {
+                    onIdle()
+                }
                 onSuccess(it)
             },
             onError = {
@@ -144,15 +170,19 @@ abstract class FudgeTvViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : V
      * @param params The parameters for the use case.
      * @param onMapExceptionToState A function to map exceptions to the state.
      * @param onGetDefaultValue A function that provides a default value in case of failure.
+     * @param showLoadingState A boolean indicating if the loading state should be shown (default is true).
      * @return The result of the use case execution.
      */
     protected suspend fun <PARAMS, RESULT, UC : FudgeTvUseCaseWithParams<PARAMS, RESULT>> executeUseCaseWithParams(
         useCase: UC,
         params: PARAMS,
         onMapExceptionToState: ((Exception, STATE) -> STATE)? = null,
-        onGetDefaultValue: () -> RESULT
+        onGetDefaultValue: () -> RESULT,
+        showLoadingState: Boolean = true
     ): RESULT {
-        onLoading()
+        if (showLoadingState) {
+            onLoading()
+        }
         return try {
             useCase.invoke(
                 scope = viewModelScope,
@@ -162,7 +192,9 @@ abstract class FudgeTvViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : V
             onErrorOccurred(ex, onMapExceptionToState)
             onGetDefaultValue()
         } finally {
-            onIdle()
+            if (showLoadingState) {
+                onIdle()
+            }
         }
     }
 
@@ -174,20 +206,26 @@ abstract class FudgeTvViewModel<STATE : UiState<STATE>, EFFECT : SideEffect> : V
      * @param onSuccess A callback function to be invoked upon successful execution with the result.
      * @param onFailed A callback function to be invoked upon failed execution.
      * @param onMapExceptionToState A function to map exceptions to the state.
+     * @param showLoadingState A boolean indicating if the loading state should be shown (default is true).
      */
     protected fun <PARAMS, RESULT, UC : FudgeTvUseCaseWithParams<PARAMS, RESULT>> executeUseCaseWithParams(
         useCase: UC,
         params: PARAMS,
         onSuccess: (RESULT) -> Unit = {},
         onFailed: () -> Unit = {},
-        onMapExceptionToState: ((Exception, STATE) -> STATE)? = null
+        onMapExceptionToState: ((Exception, STATE) -> STATE)? = null,
+        showLoadingState: Boolean = true
     ) {
-        onLoading()
+        if (showLoadingState) {
+            onLoading()
+        }
         useCase.invoke(
             scope = viewModelScope,
             params = params,
             onSuccess = {
-                onIdle()
+                if (showLoadingState) {
+                    onIdle()
+                }
                 onSuccess(it)
             },
             onError = {

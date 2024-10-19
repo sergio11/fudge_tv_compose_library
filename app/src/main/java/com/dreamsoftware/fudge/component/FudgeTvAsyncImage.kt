@@ -24,6 +24,7 @@ fun FudgeTvAsyncImage(
     reverseStyle: Boolean = false,
     imageUrl: String? = null,
     imageUri: Uri? = null,
+    contentScale: ContentScale = ContentScale.Crop,
     colorFilter: ColorFilter? = null
 ) {
     (imageUrl ?: imageUri)?.let {
@@ -32,19 +33,29 @@ fun FudgeTvAsyncImage(
                 .data(it)
                 .crossfade(true)
                 .build(),
-            contentScale = ContentScale.Crop,
+            contentScale = contentScale,
             contentDescription = "",
             colorFilter = colorFilter
         ) {
             val state = painter.state
             if (state is AsyncImagePainter.State.Loading || state is AsyncImagePainter.State.Error) {
-                DefaultImagePlaceholder(modifier, reverseStyle, defaultImagePlaceholderRes)
+                DefaultImagePlaceholder(
+                    modifier = modifier,
+                    reverseStyle = reverseStyle,
+                    contentScale = contentScale,
+                    defaultImagePlaceholderRes = defaultImagePlaceholderRes
+                )
             } else {
                 SubcomposeAsyncImageContent(modifier)
             }
         }
     } ?: run {
-        DefaultImagePlaceholder(modifier, reverseStyle, defaultImagePlaceholderRes)
+        DefaultImagePlaceholder(
+            modifier = modifier,
+            reverseStyle = reverseStyle,
+            contentScale = contentScale,
+            defaultImagePlaceholderRes = defaultImagePlaceholderRes
+        )
     }
 }
 
@@ -52,6 +63,7 @@ fun FudgeTvAsyncImage(
 private fun DefaultImagePlaceholder(
     modifier: Modifier,
     reverseStyle: Boolean = false,
+    contentScale: ContentScale,
     @DrawableRes defaultImagePlaceholderRes: Int,
 ) {
     Image(
@@ -66,7 +78,7 @@ private fun DefaultImagePlaceholder(
             )
         },
         contentDescription = "",
-        contentScale = ContentScale.Fit,
+        contentScale = contentScale,
         modifier = with(MaterialTheme.colorScheme) {
             modifier.background(
                 if (reverseStyle) {
