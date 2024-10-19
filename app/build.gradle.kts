@@ -56,7 +56,7 @@ publishing {
             run {
                 groupId = "com.dreamsoftware.libraries"
                 artifactId = "fudge-tv-compose"
-                version = "0.0.42"
+                version = "0.0.43"
                 artifact("$buildDir/outputs/aar/app-release.aar")
             }
         }

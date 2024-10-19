@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,6 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.fudge.R
 
@@ -50,7 +52,10 @@ fun FudgeTvDialog(
 ) {
     if(isVisible) {
         Dialog(
-            onDismissRequest = onCancelClicked ?: {}
+            onDismissRequest = onCancelClicked ?: {},
+            properties = DialogProperties(
+                decorFitsSystemWindows = false
+            )
         ) {
             CommonDialogUI(
                 modifier = modifier,
@@ -86,6 +91,7 @@ private fun CommonDialogUI(
     customContent: @Composable ColumnScope.() -> Unit = {}
 ) {
     with(MaterialTheme.colorScheme) {
+        val isKeyboardOpen by fudgeTvKeyboardAsState()
         Surface(
             modifier = modifier
                 .clip(RoundedCornerShape(16.dp))
@@ -97,24 +103,28 @@ private fun CommonDialogUI(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
-                Image(
-                    painter = painterResource(id = mainLogoRes),
-                    contentDescription = null, // decorative
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .size(150.dp)
-                )
-                Column(modifier = Modifier.padding(horizontal = 16.dp)) {
-                    FudgeTvText(
-                        type = FudgeTvTextTypeEnum.TITLE_LARGE,
-                        titleText = title,
+                if(!isKeyboardOpen) {
+                    Image(
+                        painter = painterResource(id = mainLogoRes),
+                        contentDescription = null, // decorative
                         modifier = Modifier
-                            .fillMaxWidth(),
-                        maxLines = 2,
-                        textColor = contentColor ?: inverseOnSurface,
-                        textAlign = TextAlign.Center
+                            .padding(top = 10.dp)
+                            .size(150.dp)
                     )
-                    Spacer(modifier = Modifier.height(10.dp))
+                }
+                Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+                    if(!isKeyboardOpen) {
+                        FudgeTvText(
+                            type = FudgeTvTextTypeEnum.TITLE_LARGE,
+                            titleText = title,
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            maxLines = 2,
+                            textColor = contentColor ?: inverseOnSurface,
+                            textAlign = TextAlign.Center
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                    }
                     FudgeTvText(
                         modifier = Modifier
                             .padding(top = 10.dp, start = 25.dp, end = 25.dp)
