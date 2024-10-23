@@ -10,6 +10,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -48,9 +49,13 @@ fun FudgeTvTextField(
     @StringRes labelRes: Int,
     focusedLabelColor: Color? = null,
     unfocusedLabelColor: Color? = null,
+    focusedBorderColor: Color? = null,
+    unfocusedBorderColor: Color? = null,
     icon: ImageVector,
     imeAction: ImeAction = ImeAction.Next,
     onImeActionCompleted: () -> Unit = {},
+    singleLine: Boolean = false,
+    maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     errorMessage: String? = null
 ) {
@@ -64,13 +69,17 @@ fun FudgeTvTextField(
                 modifier = modifier,
                 value = value,
                 enabled = enabled,
-                colors = TextFieldDefaults.colors(
+                singleLine = singleLine,
+                maxLines = maxLines,
+                colors = OutlinedTextFieldDefaults.colors(
                     focusedLabelColor = focusedLabelColor ?: onPrimary,
                     unfocusedLabelColor = unfocusedLabelColor ?: if(value.isNotBlank()) {
                         onPrimary
                     } else {
                         primary
-                    }
+                    },
+                    focusedBorderColor = focusedBorderColor ?: Color.Unspecified,
+                    unfocusedBorderColor = unfocusedBorderColor ?: Color.Unspecified
                 ),
                 visualTransformation = if (type != FudgeTvTextFieldTypeEnum.PASSWORD && type != FudgeTvTextFieldTypeEnum.NUMBER_SECRET)
                     VisualTransformation.None
