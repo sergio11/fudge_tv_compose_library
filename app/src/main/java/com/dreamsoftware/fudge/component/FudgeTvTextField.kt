@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -47,10 +46,15 @@ fun FudgeTvTextField(
     enabled: Boolean = true,
     onValueChange: (value: String) -> Unit = {},
     @StringRes labelRes: Int,
+    focusedTextColor: Color? = null,
+    unfocusedTextColor: Color? = null,
+    unfocusedContainerColor: Color? = null,
+    focusedContainerColor: Color? = null,
     focusedLabelColor: Color? = null,
     unfocusedLabelColor: Color? = null,
     focusedBorderColor: Color? = null,
     unfocusedBorderColor: Color? = null,
+    cursorColor: Color? = null,
     icon: ImageVector,
     imeAction: ImeAction = ImeAction.Next,
     onImeActionCompleted: () -> Unit = {},
@@ -72,12 +76,17 @@ fun FudgeTvTextField(
                 singleLine = singleLine,
                 maxLines = maxLines,
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = focusedTextColor ?: Color.Unspecified,
+                    unfocusedTextColor = unfocusedTextColor ?: Color.Unspecified,
+                    unfocusedContainerColor = unfocusedContainerColor ?: Color.White,
+                    focusedContainerColor = focusedContainerColor ?: Color.White,
                     focusedLabelColor = focusedLabelColor ?: onPrimary,
                     unfocusedLabelColor = unfocusedLabelColor ?: if(value.isNotBlank()) {
                         onPrimary
                     } else {
                         primary
                     },
+                    cursorColor = cursorColor ?: primary,
                     focusedBorderColor = focusedBorderColor ?: Color.Unspecified,
                     unfocusedBorderColor = unfocusedBorderColor ?: Color.Unspecified
                 ),
