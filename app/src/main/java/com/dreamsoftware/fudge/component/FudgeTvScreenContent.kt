@@ -14,6 +14,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import androidx.tv.material3.MaterialTheme
 import kotlinx.coroutines.launch
 
@@ -44,7 +45,9 @@ fun FudgeTvScreenContent(
             content()
             SnackbarHost(
                 hostState = snackState,
-                modifier = Modifier.align(Alignment.BottomCenter),
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .zIndex(1f),
                 snackbar = {
                     Snackbar(
                         shape = RoundedCornerShape(20.dp),
