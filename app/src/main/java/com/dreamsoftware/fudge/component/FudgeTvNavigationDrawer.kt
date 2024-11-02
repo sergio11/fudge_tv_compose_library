@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -40,6 +41,7 @@ import androidx.tv.material3.NavigationDrawerItemColors
 import androidx.tv.material3.rememberDrawerState
 import com.dreamsoftware.fudge.theme.Dimens.BACKGROUND_CONTENT_PADDING
 import com.dreamsoftware.fudge.theme.Dimens.CLOSE_DRAWER_WIDTH
+import com.dreamsoftware.fudge.theme.Dimens.DEFAULT_DRAWER_LOGO_SIZE
 import kotlinx.coroutines.delay
 
 data class FudgeTvNavigationDrawerItemModel(
@@ -54,6 +56,7 @@ data class FudgeTvNavigationDrawerItemModel(
 fun FudgeTvNavigationDrawer(
     modifier: Modifier = Modifier,
     @DrawableRes mainLogoInverseRes: Int,
+    logoSize: Dp? = null,
     hiddenDrawerRoutes: List<String> = emptyList(),
     currentDestination: NavDestination?,
     items: List<FudgeTvNavigationDrawerItemModel>,
@@ -101,7 +104,7 @@ fun FudgeTvNavigationDrawer(
                                 painter = painterResource(id = mainLogoInverseRes),
                                 contentDescription = null,
                                 modifier = Modifier
-                                    .height(120.dp)
+                                    .height(logoSize ?: DEFAULT_DRAWER_LOGO_SIZE)
                                     .padding(horizontal = 20.dp)
                             )
                         }

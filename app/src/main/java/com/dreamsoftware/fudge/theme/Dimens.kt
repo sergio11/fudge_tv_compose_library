@@ -11,4 +11,5 @@ object Dimens {
     val DEFAULT_BUTTON_SMALL_HEIGHT = 35.dp
     val CLOSE_DRAWER_WIDTH = 80.dp
     val BACKGROUND_CONTENT_PADDING = 12.dp
+    val DEFAULT_DRAWER_LOGO_SIZE = 120.dp
 }
