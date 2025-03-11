@@ -9,6 +9,10 @@
   <img src="https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" />
 </p>
 
+## ⚠️ Disclaimer  
+
+This project has been developed **exclusively for learning and experimentation purposes**. **Fudge** is an exploratory Jetpack Compose UI kit designed to gain insights into TV interface development, focus management, and state handling in Android applications.  
+
 
 ### Features 🎉
 
@@ -147,6 +151,11 @@ fudge-tv-compose = { module = "com.dreamsoftware.libraries:fudge-tv-compose", ve
 ```kotin
 implementation(libs.fudge.tv.compose)
 ```
+
+## ⚠️ Disclaimer  
+
+This project has been developed **exclusively for learning and experimentation purposes**. **Fudge** is an exploratory Jetpack Compose UI kit designed to gain insights into TV interface development, focus management, and state handling in Android applications.  
+
 
 ## Contribution
 Contributions to Fudge: Jetpack Compose TV UI Kit are highly encouraged! If you're interested in adding new features, resolving bugs, or enhancing the project's functionality, please feel free to submit pull requests.
