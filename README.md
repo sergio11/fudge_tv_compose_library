@@ -9,6 +9,12 @@
   <img src="https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" />
 </p>
 
+I want to express my deepest gratitude to the creators of **[JetFit](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit)** and the contributors to **[PR #183](https://github.com/android/tv-samples/pull/183)** for providing an invaluable foundation for this project. This initiative aims to offer an open-source implementation inspired by JetFit, following the **Apache 2.0** license.  
+
+I would also like to extend my sincere appreciation to **[Umair Khalid](https://github.com/UmairKhalid786)** for his outstanding work on the **[ComposeTv](https://github.com/UmairKhalid786/ComposeTv)** repository. His well-structured code and clear documentation have been essential resources throughout this process, enabling me to learn and apply new techniques in Jetpack Compose development.  
+
+A huge thank you to the community for their efforts and contributions to the open-source ecosystem. I hope this project can also be a valuable resource for other developers! 🚀🙏  
+
 ## ⚠️ Disclaimer  
 
 This project has been developed **exclusively for learning and experimentation purposes**. **Fudge** is an exploratory Jetpack Compose UI kit designed to gain insights into TV interface development, focus management, and state handling in Android applications.  
@@ -156,6 +162,13 @@ implementation(libs.fudge.tv.compose)
 
 This project has been developed **exclusively for learning and experimentation purposes**. **Fudge** is an exploratory Jetpack Compose UI kit designed to gain insights into TV interface development, focus management, and state handling in Android applications.  
 
+## 🎖️ Recognition & Credits  
+
+I want to express my deepest gratitude to the creators of **[JetFit](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit)** and the contributors to **[PR #183](https://github.com/android/tv-samples/pull/183)** for providing an invaluable foundation for this project. This initiative aims to offer an open-source implementation inspired by JetFit, following the **Apache 2.0** license.  
+
+I would also like to extend my sincere appreciation to **[Umair Khalid](https://github.com/UmairKhalid786)** for his outstanding work on the **[ComposeTv](https://github.com/UmairKhalid786/ComposeTv)** repository. His well-structured code and clear documentation have been essential resources throughout this process, enabling me to learn and apply new techniques in Jetpack Compose development.  
+
+A huge thank you to the community for their efforts and contributions to the open-source ecosystem. I hope this project can also be a valuable resource for other developers! 🚀🙏  
 
 ## Contribution
 Contributions to Fudge: Jetpack Compose TV UI Kit are highly encouraged! If you're interested in adding new features, resolving bugs, or enhancing the project's functionality, please feel free to submit pull requests.
@@ -172,39 +185,27 @@ Fudge: Jetpack Compose TV UI Kit is developed and maintained by Sergio Sánchez 
      <img src = "https://img.shields.io/github/stars/sergio11/fudge_tv_compose_library" />
   </a>
 
-
 ## License ⚖️
 
-This project is licensed under the MIT License, an open-source software license that allows developers to freely use, copy, modify, and distribute the software. 🛠️ This includes use in both personal and commercial projects, with the only requirement being that the original copyright notice is retained. 📄
+This project is licensed under the **Apache License 2.0**, a permissive open-source software license that allows developers to freely use, modify, and distribute the software. 🚀 This includes both personal and commercial use, with some conditions for distribution and modification. 📜
 
-Please note the following limitations:
+Key terms of the Apache License 2.0:
 
-- The software is provided "as is", without any warranties, express or implied. 🚫🛡️
-- If you distribute the software, whether in original or modified form, you must include the original copyright notice and license. 📑
-- The license allows for commercial use, but you cannot claim ownership over the software itself. 🏷️
+- You are allowed to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software. 💻
+- If you modify and distribute the software, you must include the original copyright notice, provide a copy of the Apache 2.0 license, and indicate any modifications made. 📝
+- You are not allowed to use the name of the project or its contributors to promote derived works without permission. ✋
+- The software is provided "as is," without any warranties, express or implied. 🚫🛡️
 
-The goal of this license is to maximize freedom for developers while maintaining recognition for the original creators.
+Please see the full license text below for more detailed terms.
 
 ```
-MIT License
+Apache License Version 2.0, January 2004 http://www.apache.org/licenses/
 
-Copyright (c) 2024 Dream software - Sergio Sánchez 
+Copyright (c) 2024 Dream software - Sergio Sánchez
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+http://www.apache.org/licenses/LICENSE-2.0
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 ```
